@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileApp.View.TermMainPage"
+             Title="HOME">
+    <ContentPage.ToolbarItems>        
+        <ToolbarItem x:Name="Settings" Text="Settings" Order="Secondary" Clicked="Settings_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <StackLayout Margin="30" HorizontalOptions="Center">
+            <!-- Display list of Terms-->
+            <Label Text="WELCOME TO TERM TRACKING" HorizontalOptions="Center" FontAttributes="Bold"
+                            VerticalOptions="Center" FontSize="Large" Margin="20" TextColor="DarkBlue"/>
+
+            <CollectionView x:Name="MainPageCollectionView"
+                    ItemsSource="{Binding Terms}"
+                    EmptyView="No Terms to Display"
+                    SelectionMode="Single"
+                    SelectionChanged="MainPageCollectionView_SelectionChanged"
+                    VerticalOptions="Center">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="20"/>
+                </CollectionView.ItemsLayout>
+
+                <!--Define the list-->
+                <CollectionView.ItemTemplate >
+                    <DataTemplate>
+                        <Grid Padding="10" RowSpacing="10" ColumnSpacing="5" BackgroundColor="LightBlue">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Term" FontAttributes="Bold" FontSize="Large"/>
+                            <Label Grid.Column="1" Text="Star Date" FontAttributes="Bold" FontSize="Large"/>
+                            <Label Grid.Column="2" Text="End Date" FontAttributes="Bold" FontSize="Large"/>
+
+                            <Label Text="{Binding Title}" 
+                                       Grid.Row="1" Grid.Column ="0" VerticalTextAlignment="Center" FontSize="Medium"/>
+                            <Label Text="{Binding Start, StringFormat='{0:M/dd/yyyy}'}"
+                                       Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Center" FontSize="Medium"/>
+                            <Label Text="{Binding End, StringFormat='{0:M/dd/yyyy}'}"
+                                       Grid.Row="1" Grid.Column="2" VerticalTextAlignment="Center" FontSize="Medium"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button x:Name="AddButton"
+                            Text="ADD TERM"
+                            TextColor="Black"
+                            BackgroundColor="DarkGray"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"                   
+                            Clicked="AddButton_Clicked"/>
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>

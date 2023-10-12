@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileApp.View.AddTermPage"
+             Title="Add Term">    
+    
+    <ContentPage.Content>
+        <StackLayout Margin="30">
+
+            <!--#region Add Term-->
+            <Grid Padding ="5" RowSpacing ="2" ColumnSpacing ="20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width = "Auto"/>
+                    <ColumnDefinition Width = "Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" FontSize="Large" VerticalTextAlignment="Center" Text="Term"
+                       FontAttributes="Bold"/>
+                <Entry Grid.Column="1" Grid.Row="0" x:Name="TermName" Placeholder="Enter Term Name" 
+                       Text="{Binding Title}" VerticalTextAlignment="Center" WidthRequest="200"/>
+                
+                <Label Grid.Column="0" Grid.Row="1" FontSize="Large" VerticalTextAlignment="Center" 
+                       Text="Start Date" FontAttributes="Bold"/>
+                <DatePicker Grid.Column="1" Grid.Row="1" x:Name="TermStart" Date="{Binding Start}" 
+                            FontSize="Large" WidthRequest="200"/>
+                
+                <Label Grid.Column="0" Grid.Row="2" FontSize="Large" VerticalTextAlignment="Center" Text="End Date"
+                       FontAttributes="Bold"/>
+                <DatePicker Grid.Column="1" Grid.Row="2" x:Name="TermEnd" Date="{Binding End}" 
+                            FontSize="Large" WidthRequest="200"/>
+                
+            </Grid>
+            <!--#endregion-->
+            
+            <!--#region Save/Cancel Buttons-->
+            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                <Button x:Name="SaveButton"
+                    Text="SAVE"
+                    TextColor="Black"
+                    BackgroundColor="DarkGray"
+                    Clicked="SaveButton_OnClicked"/>
+                <Button x:Name="CancelButton"
+                    Text="CANCEL"
+                    TextColor="Black"
+                    BackgroundColor="DarkGray"
+                    WidthRequest="{Binding Path=Width, Source={x:Reference SaveButton}}"
+                    Clicked="CancelButton_OnClicked"/>
+            </StackLayout>
+            
+            <!--#endregion-->
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

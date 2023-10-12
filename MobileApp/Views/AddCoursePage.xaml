@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileApp.View.AddCoursePage"
+             Title="Add Course">    
+    <ScrollView>
+        <StackLayout Margin="30">
+            
+            <!--#region Add Course-->
+            <Grid Padding="5" RowSpacing="2" ColumnSpacing="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="Course Name" FontAttributes="Bold" FontSize="Large" VerticalTextAlignment="Center"/>
+                <Entry x:Name="CourseName" Grid.Column="1" Grid.Row="0" Placeholder="Enter Course Name" 
+                       VerticalTextAlignment="Center" FontSize="Large" WidthRequest="200" />
+
+                <Label Text="Start Date" Grid.Column="0" Grid.Row="1" FontAttributes="Bold" FontSize="Large" 
+                       VerticalTextAlignment="Center"/>
+                <DatePicker x:Name="StartDateCourse" Grid.Column="1" Grid.Row="1" FontSize="Large" WidthRequest="200" 
+                            />
+
+                <Label Text="End Date" Grid.Column="0" Grid.Row="2" FontAttributes="Bold" FontSize="Large"
+                       VerticalTextAlignment="Center"/>
+                <DatePicker x:Name="EndDateCourse" Grid.Column="1" Grid.Row="2" FontSize="Large" WidthRequest="200" 
+                            />
+
+                <Label Text="Status" Grid.Column="0" Grid.Row="3" FontAttributes="Bold" FontSize="Large"
+                       VerticalTextAlignment="Center"/>
+                <Picker Title="Select Status" WidthRequest="200" 
+                        Grid.Column="1" Grid.Row="3" x:Name="PickedStatus" FontSize="Large">
+                    <Picker.Items>
+                        <x:String>Completed</x:String>
+                        <x:String>In-Progress</x:String>
+                        <x:String>Withdrawn</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Text="Instructor" Grid.Column="0" Grid.Row="4" FontAttributes="Bold" FontSize="Large"
+                       VerticalTextAlignment="Center"/>
+                <Entry x:Name="InstructorName" Grid.Column="1" Grid.Row="4" FontSize="Large" WidthRequest="200" />
+
+                <Label Text="Instructor Email" Grid.Column="0" Grid.Row="5" FontAttributes="Bold" FontSize="Large"
+                       VerticalTextAlignment="Center"/>
+                <Entry x:Name="Email" Grid.Column="1" Grid.Row="5" FontSize="Large" WidthRequest="200" Placeholder="sample@email.com"/>
+
+                <Label Text="Instructor Phone" Grid.Column="0" Grid.Row="6" FontAttributes="Bold" FontSize="Large" 
+                       VerticalTextAlignment="Center"/>
+                <Entry x:Name="Phone" Grid.Column="1" Grid.Row="6" FontSize="Large" WidthRequest="200" MaxLength="10"/>
+
+                <Label Text="Note" Grid.Column="0" Grid.Row="7" FontAttributes="Bold" FontSize="Large" 
+                       VerticalTextAlignment="Center"/>
+                <Entry x:Name="Note" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" 
+                       Grid.Column="1" Grid.Row="7" FontSize="Large" WidthRequest="200" />
+
+                <Label Text="Notify" Grid.Column="0" Grid.Row="8" FontAttributes="Bold" FontSize="Large"
+                       VerticalTextAlignment="Center"/>
+                <Switch x:Name="Noti" HorizontalOptions="End" IsToggled="True" VerticalOptions="Center"
+                        Grid.Column="1" Grid.Row="8"/>
+            </Grid>
+            <!--#endregion-->
+            
+            <!--#region Buttons Save/Cancel-->
+            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                <Button x:Name="SaveCourse"
+                        Text="SAVE"
+                        TextColor="Black"
+                        BackgroundColor="DarkGray"
+                        Clicked="SaveCourse_OnClicked"/>
+
+                <Button x:Name="Cancel"
+                        Text="CANCEL"
+                        TextColor="Black"
+                        BackgroundColor="DarkGray"
+                        WidthRequest="{Binding Path=Width, Source={x:Reference SaveCourse}}"
+                        Clicked="Cancel_OnClicked"/>                                              
+                
+            </StackLayout>
+            <!--#endregion-->
+            
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileApp.View.EditTerm"
+             Title="Edit/Delete Term">
+    
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+            <!--#region Edit Term-->
+            <Grid Padding ="5" RowSpacing ="2" ColumnSpacing ="25">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width = "Auto"/>
+                    <ColumnDefinition Width = "Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="Term ID"
+                       FontSize="Large" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="Black"
+                       Grid.Column="0" Grid.Row="0"/>
+                <Entry Text="{Binding Id}" x:Name="TermId"
+                       VerticalTextAlignment="Center" IsReadOnly="True" FontSize="Large"
+                       Grid.Column="1" Grid.Row="0" WidthRequest="250"/>
+                
+                <Label Text="Term"
+                       FontSize="Large" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="Black"
+                       Grid.Column="0" Grid.Row="1"/>
+                <Entry x:Name="TermName" Text="{Binding Title}" 
+                       Placeholder="Enter Term Name" WidthRequest="200"
+                       VerticalTextAlignment="Center" FontSize="Large"                       
+                       Grid.Column="1" Grid.Row="1"/>
+                
+                <Label Text="Start Date"
+                       FontSize="Large" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="Black"
+                       Grid.Column="0" Grid.Row="2" />
+                <DatePicker x:Name="TermStart" Date="{Binding Start}" FontSize="Large" WidthRequest="250"              
+                            Grid.Column="1" Grid.Row="2"/>
+                
+                <Label Text="End Date" 
+                       FontSize="Large" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="Black"
+                       Grid.Column="0" Grid.Row="3" />
+                <DatePicker x:Name="TermEnd" Date="{Binding End}" FontSize="Large" WidthRequest="250"          
+                            Grid.Column="1" Grid.Row="3"/>
+            </Grid>
+            <!--#endregion-->
+            
+            <!--#region Save/Cancel/Delete Buttons-->
+            <StackLayout Orientation="Horizontal" 
+                             VerticalOptions="CenterAndExpand" 
+                             HorizontalOptions="Center">
+                
+                <Button x:Name="SaveTerm"
+                        Text="SAVE"
+                        TextColor="Black"
+                        BackgroundColor="DarkGray"
+                        Clicked="SaveTerm_OnClicked"/>
+
+                <Button x:Name="Cancel"
+                        Text="CANCEL"
+                        TextColor="Black"
+                        BackgroundColor="DarkGray" 
+                        Clicked="Cancel_OnClicked"/>
+
+                <Button x:Name="DeleteTerm"
+                        Text="DELETE"
+                        TextColor="Black"
+                        BackgroundColor="DarkGray"
+                        Clicked="DeleteTerm_OnClicked"/>
+            </StackLayout>            
+            <!--endregion-->
+            
+            <!--#region Course List-->
+
+            <Label Text="_________________________________________" HorizontalTextAlignment="Center" Margin="0,40,0,10"/>
+
+            <Label Text="Number of Course in this Term" FontSize="Large" FontAttributes="Bold" TextColor="Black"
+                   HorizontalTextAlignment="Center"/>
+            <Label x:Name="CountCourse" FontSize="Large" TextColor="Black" HorizontalTextAlignment="Center"/>
+                
+            <Button x:Name="AddCourse"
+                    Text="ADD COURSE"
+                    TextColor="Black"
+                    BackgroundColor="DarkGray"
+                    Margin="30,10,30,10"
+                    Clicked="AddCourse_Clicked"/>
+                
+            <Label Text="List of Course" FontSize="Large" FontAttributes="Bold" Margin="10" TextColor="Black"
+                   HorizontalTextAlignment="Center"/>
+            
+            <!--DISPLAY courses-->
+            <CollectionView x:Name="CourseCollectionView"
+                            ItemsSource="{Binding Courses}"
+                            EmptyView="No Course to Display"
+                            SelectionMode="Single"
+                            SelectionChanged="CourseCollectionView_SelectionChanged">
+                
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" RowSpacing="10" Margin="20,0,20,0"
+                              ColumnSpacing="40" BackgroundColor="LightBlue">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>                                
+                            </Grid.RowDefinitions>
+                            
+                            <Label Text="Course"
+                                   FontAttributes="Bold" 
+                                   FontSize="Medium" 
+                                   VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding Name}"
+                                   x:Name="CourseName"                                   
+                                   FontSize="Medium"
+                                   FontAttributes="Bold"
+                                   Grid.Column="1" Grid.Row="0"/>
+
+                            <Label Text="Status"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   VerticalTextAlignment="Center"
+                                   Grid.Column="0" Grid.Row="1"/>
+                            <Label Text="{Binding Status}"                                   
+                                   x:Name="Status"
+                                   FontSize="Medium"
+                                   Grid.Column="1" Grid.Row="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>                
+            </CollectionView>
+           
+            <!--#endregion-->
+            
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+        
+</ContentPage>

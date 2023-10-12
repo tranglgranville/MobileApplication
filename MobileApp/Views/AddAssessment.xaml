@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileApp.View.AddAssessment"
+             Title="Add Assessment">
+    <ScrollView>
+        <StackLayout Margin="30">
+            <Grid Padding="5" RowSpacing="2" ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="Assessment Name" FontAttributes="Bold" FontSize="Large" VerticalTextAlignment="Center"
+                       Grid.Column="0" Grid.Row="0"/>
+                <Entry x:Name="AssessmentName" Placeholder="Enter Assessment Name" FontSize="Large"
+                       Grid.Column="1" Grid.Row="0"/>
+
+                <Label Text="Start Date" FontAttributes="Bold" FontSize="Large" VerticalTextAlignment="Center"
+                       Grid.Column="0" Grid.Row="1"/>
+                <DatePicker x:Name="StartDate" FontSize="Large"
+                            Grid.Column="1" Grid.Row="1"/>
+
+                <Label Text="End Date" FontAttributes="Bold" FontSize="Large" VerticalTextAlignment="Center"
+                       Grid.Column="0" Grid.Row="2"/>
+                <DatePicker x:Name="EndDate" FontSize="Large"
+                            Grid.Column="1" Grid.Row="2"/>
+
+                <Label Text="Notify" FontAttributes="Bold" FontSize="Large" VerticalTextAlignment="Center"
+                       Grid.Column="0" Grid.Row="3"/>
+                <Switch x:Name="Noti" HorizontalOptions="End" IsToggled="true"
+                        Grid.Column="1" Grid.Row="3"/>
+            </Grid>
+            
+            <!--#region Buttons Edit Delete Cancel-->            
+            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                <Button x:Name="SaveAssessment"
+                        Text="SAVE"
+                        TextColor="Black"
+                        BackgroundColor="DarkGray"                  
+                        Clicked="SaveAssessment_OnClicked"/>
+                <Button x:Name="Cancel"
+                        Text="CANCEL"
+                        TextColor="Black"
+                        BackgroundColor="DarkGray"
+                        Clicked="Cancel_OnClicked"/>
+                
+            </StackLayout>
+            <!--#endregion-->
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
